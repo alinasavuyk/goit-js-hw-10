@@ -10,7 +10,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  background-color: aquamarine;
+  background-color: rgb(200, 219, 241);
 }
 
 #search-box {
@@ -24,5 +24,29 @@ body {
   font-size: 16px;
 }
 .list_img{
-  padding-right: 20px;
+  padding-right: 10px;
+}
+input{
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+.country-list{
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.country-info{
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-text{
+  font-size: 20px;
+  color: #212121;
+  font-weight: bold;
+}
+.title{
+  font-weight: normal;
 }
