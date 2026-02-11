@@ -18,14 +18,15 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onChange(selectedDates) {
+  onClose(selectedDates) {
+    button.disabled=true;
    const selectedDate =selectedDates[0]
-    if (selectedDate<new Date()){
+    if (selectedDate<=new Date()){
         iziToast.warning({
     title: 'Caution',
     message: 'Please choose a date in the future',
 });
-        button.disabled=true;
+return;
     }else{
 userSelectedDate= selectedDate;
  button.disabled=false;
@@ -60,16 +61,20 @@ function handleClick() {
     if (timerMs <= 0) {
       clearInterval(timerId);
        input.disabled=false; 
+       updateInterface({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       return;
     } 
     const timeData = convertMs(timerMs);
-    valueDays.textContent = addLeadingZero(timeData.days);
-    valueHours.textContent = addLeadingZero(timeData.hours);
-    valueMinutes.textContent = addLeadingZero(timeData.minutes);
-    valueSeconds.textContent = addLeadingZero(timeData.seconds);
+    updateInterface(timeData);
+    
   }, 1000);
 }
-
+function updateInterface({ days, hours, minutes, seconds }) {
+  valueDays.textContent = addLeadingZero(days);
+  valueHours.textContent = addLeadingZero(hours);
+  valueMinutes.textContent = addLeadingZero(minutes);
+  valueSeconds.textContent = addLeadingZero(seconds);
+}
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
